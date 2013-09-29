@@ -7,7 +7,7 @@ import java.awt.Dimension;
 
 import javax.swing.JFrame;
 
-import cardgame.graphics.base.EFrame;
+import framework.graphics.guicomponents.EFrame;
 
 /**
  * @author MrE
