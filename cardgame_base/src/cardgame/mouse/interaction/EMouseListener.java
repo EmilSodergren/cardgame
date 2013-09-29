@@ -1,5 +1,7 @@
 package cardgame.mouse.interaction;
 
-public class EMouseListener {
+import java.awt.event.MouseAdapter;
+
+public class EMouseListener extends MouseAdapter{
 
 }
