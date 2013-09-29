@@ -16,8 +16,8 @@ public class CardBase extends JComponent {
 
 	private static final long serialVersionUID = 838972446142610186L;
 	
-	protected Point pos;
-	protected Dimension dim;
+	private Point pos;
+	private Dimension dim;
 	
 	public CardBase() {
 		this(null, null);
@@ -27,4 +27,12 @@ public class CardBase extends JComponent {
 		this.pos = position;
 		this.dim = dimension;
 	}
+
+	public Point getPos() {
+		return pos;
+	}
+
+	public Dimension getDim() {
+		return dim;
+	}	
 }
