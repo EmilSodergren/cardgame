@@ -5,8 +5,9 @@ package cardgame.graphics.test;
 
 import java.awt.Dimension;
 
+import javax.swing.JFrame;
+
 import cardgame.graphics.base.EFrame;
-import cardgame.graphics.gui.Card;
 
 /**
  * @author MrE
@@ -27,8 +28,9 @@ public class TestWindow extends EFrame {
 		window.setLocation(1920-800, 0);
 		window.setSize(new Dimension(800, 600));
 		window.setVisible(true);
+		window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		
-		Card card = new Card();
+		TestCard card = new TestCard();
 		
 		window.add(card);
 	}
