@@ -1,7 +1,7 @@
 /**
  * 
  */
-package gui.base;
+package cardgame.gui.base;
 
 import javax.swing.JFrame;
 

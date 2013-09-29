@@ -1,11 +1,11 @@
 /**
  * 
  */
-package gui.test;
+package cardgame.gui.test;
 
 import java.awt.Dimension;
 
-import gui.base.EFrame;
+import cardgame.gui.base.EFrame;
 
 /**
  * @author MrE
