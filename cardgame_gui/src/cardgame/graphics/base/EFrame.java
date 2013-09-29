@@ -1,7 +1,7 @@
 /**
  * 
  */
-package cardgame.gui.base;
+package cardgame.graphics.base;
 
 import javax.swing.JFrame;
 
@@ -20,5 +20,4 @@ public class EFrame extends JFrame {
 	public EFrame(String s) {
 		super(s);
 	}
-
 }
