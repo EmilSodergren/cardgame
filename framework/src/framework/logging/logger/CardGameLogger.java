@@ -49,4 +49,12 @@ public class CardGameLogger {
 	public void info(String msg) {
 		logger.log(Level.INFO, msg);
 	}
+	
+	public void debug(String msg) {
+		logger.log(Level.FINE, msg);
+	}
+	
+	public void trace(String msg) {
+		logger.log(Level.FINER, msg);
+	}
 }

@@ -41,7 +41,6 @@ public class LoggerWindow extends JFrame{
 		
 		textArea = new JTextArea();
 		textArea.setName("textArea");
-//		textArea.setText("Hej fuling!");
 		textArea.setVisible(true);
 		
 		scrollPane = new JScrollPane();

@@ -5,7 +5,6 @@ package test;
 
 import java.awt.Dimension;
 import java.awt.Toolkit;
-import java.util.logging.Logger;
 
 import javax.swing.JFrame;
 
@@ -21,19 +20,16 @@ public class TestWindow extends EFrame {
 
 	private static final long serialVersionUID = 1742936565714076461L;
 	
-	public CardGameLogger logger;
+	public CardGameLogger logger = CardGameLogger.getInstance();
 
 	public TestWindow() {
 		super("TestWindow");
 		setName(TestWindow.class.getName());
-
-		logger = CardGameLogger.getInstance();
-		
-		new LoggerWindow();
-		logger.info("Logger Window Opened");
+		logger.info("Main window created");
 	}
 
 	public static void main(String[] args) {
+		new LoggerWindow();
 		TestWindow window = new TestWindow();
 		Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
 		window.setLocation(screenSize.width - 800, 0);
