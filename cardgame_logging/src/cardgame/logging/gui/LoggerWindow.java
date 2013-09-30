@@ -5,7 +5,6 @@ package cardgame.logging.gui;
 
 import java.awt.Dimension;
 import java.awt.Toolkit;
-import java.util.logging.Logger;
 
 import javax.swing.JFrame;
 import javax.swing.JScrollPane;
@@ -13,6 +12,7 @@ import javax.swing.JTextArea;
 import javax.swing.ScrollPaneConstants;
 
 import cardgame.logging.logger.TextAreaHandler;
+import framework.logging.logger.CardGameLogger;
 
 public class LoggerWindow extends JFrame{
 
@@ -20,7 +20,7 @@ public class LoggerWindow extends JFrame{
 
 	private JTextArea textArea;
 	private JScrollPane scrollPane;
-	private Logger logger = Logger.getLogger(LoggerWindow.class.getName());
+	private CardGameLogger logger;
 	
 	private TextAreaHandler textAreaHandler;
 	
@@ -50,6 +50,7 @@ public class LoggerWindow extends JFrame{
 		scrollPane.setVisible(true);
 
 		textAreaHandler = new TextAreaHandler(textArea);
+		logger = CardGameLogger.getInstance();
 		logger.addHandler(textAreaHandler);
 		getContentPane().add(scrollPane);	
 		scrollPane.getViewport().add(textArea);
