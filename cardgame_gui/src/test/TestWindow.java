@@ -26,19 +26,18 @@ public class TestWindow extends EFrame {
 		super("TestWindow");
 		setName(TestWindow.class.getName());
 		logger.info("Main window created");
+		
+		Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
+		setLocation(screenSize.width - 800, 0);
+		setSize(new Dimension(800, 600));
+		setVisible(true);
+		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 	}
 
 	public static void main(String[] args) {
 		new LoggerWindow();
 		TestWindow window = new TestWindow();
-		Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
-		window.setLocation(screenSize.width - 800, 0);
-		window.setSize(new Dimension(800, 600));
-		window.setVisible(true);
-		window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-
 		TestCard card = new TestCard();
-
 		window.add(card);
 	}
 }
