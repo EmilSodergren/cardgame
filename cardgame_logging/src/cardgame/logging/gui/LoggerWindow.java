@@ -18,15 +18,15 @@ public class LoggerWindow extends JFrame{
 
 	private static final long serialVersionUID = 2464154933560375812L;
 
-	private JTextArea textArea;
-	private JScrollPane scrollPane;
+	private JTextArea loggerTextArea;
+	private JScrollPane loggerScrollPane;
 	private CardGameLogger logger;
 	
 	private TextAreaHandler textAreaHandler;
 	
 	public LoggerWindow() {
 		super("Log");
-		setName(LoggerWindow.class.getName());
+		setName(getName());
 		
 		Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
 		setSize(640, 320);
@@ -38,20 +38,21 @@ public class LoggerWindow extends JFrame{
 	}
 
 	private void initComponents() {
+		logger = CardGameLogger.getInstance(); //TODO: Start the logger service before the GUI component
+		loggerTextArea = new JTextArea();
+		loggerTextArea.setName("textArea");
+		loggerTextArea.setVisible(true);
 		
-		textArea = new JTextArea();
-		textArea.setName("textArea");
-		textArea.setVisible(true);
-		
-		scrollPane = new JScrollPane();
-		scrollPane.setName("scrollPane");
-		scrollPane.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
-		scrollPane.setVisible(true);
+		loggerScrollPane = new JScrollPane();
+		loggerScrollPane.setName("scrollPane");
+		loggerScrollPane.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
+		loggerScrollPane.setVisible(true);
 
-		textAreaHandler = new TextAreaHandler(textArea);
-		logger = CardGameLogger.getInstance();
+		textAreaHandler = new TextAreaHandler(loggerTextArea);
 		logger.addHandler(textAreaHandler);
-		getContentPane().add(scrollPane);	
-		scrollPane.getViewport().add(textArea);
+		getContentPane().add(loggerScrollPane);	
+		loggerScrollPane.getViewport().add(loggerTextArea);
+		
+		logger.info("Initiate the Logger Window");
 	}
 }
