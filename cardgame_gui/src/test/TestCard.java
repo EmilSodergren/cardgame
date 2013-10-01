@@ -8,7 +8,7 @@ import java.awt.Dimension;
 import java.awt.Graphics;
 import java.awt.Point;
 
-import cardgame.graphics.base.CardBase;
+import cardgame.gui.base.CardBase;
 
 /**
  * 
