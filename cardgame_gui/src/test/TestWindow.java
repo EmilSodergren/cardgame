@@ -37,7 +37,7 @@ public class TestWindow extends EFrame {
 	public static void main(String[] args) {
 		new LoggerWindow();
 		TestWindow window = new TestWindow();
-		TestCard card = new TestCard();
-		window.add(card);
+		TestGameBoard gameBoard = new TestGameBoard();
+		window.add(gameBoard);
 	}
 }
