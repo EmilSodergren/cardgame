@@ -3,29 +3,26 @@
  */
 package test;
 
-import java.awt.BorderLayout;
 import java.awt.Color;
 
-import javax.swing.JPanel;
-
-import cardgame.mouse.interaction.CardGameMouseListener;
+import cardgame.mouse.interaction.CardGameMouseAdapter;
+import framework.graphics.guicomponents.EPanel;
 import framework.logging.logger.CardGameLogger;
 
-public class TestGameBoard extends JPanel {
+public class TestGameBoard extends EPanel {
 
 	private static final long serialVersionUID = 9066548687077615194L;
 	
 	private CardGameLogger logger = CardGameLogger.getInstance();
 	
-	CardGameMouseListener mouseListener;
+	CardGameMouseAdapter mouseListener;
 	
 	public TestGameBoard() {
 		setName(TestGameBoard.class.getName());
 		logger.info("TestGameBoard panel created");
-		setLayout(new BorderLayout());
 		
-		mouseListener = new CardGameMouseListener();
-		addMouseListener(mouseListener);
+		mouseListener = new CardGameMouseAdapter();
+		initMouseInteractions(mouseListener);
 		
 		TestCard card = new TestCard();
 		add(card);
