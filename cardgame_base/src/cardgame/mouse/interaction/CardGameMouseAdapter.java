@@ -8,11 +8,11 @@ import java.awt.event.MouseEvent;
 import framework.logging.logger.CardGameLogger;
 import framework.mouse.EMouseAdapter;
 
-public class CardGameMouseListener extends EMouseAdapter {
+public class CardGameMouseAdapter extends EMouseAdapter {
 	
 	CardGameLogger logger = CardGameLogger.getInstance();
 	
-	public CardGameMouseListener() {
+	public CardGameMouseAdapter() {
 		
 	}
 	
