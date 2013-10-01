@@ -3,7 +3,10 @@
  */
 package test;
 
+import java.awt.BorderLayout;
 import java.awt.Color;
+
+import javax.swing.border.BevelBorder;
 
 import cardgame.mouse.interaction.CardGameMouseAdapter;
 import framework.graphics.guicomponents.EPanel;
@@ -20,12 +23,15 @@ public class TestGameBoard extends EPanel {
 	public TestGameBoard() {
 		setName(TestGameBoard.class.getName());
 		logger.info("TestGameBoard panel created");
+		setLayout(new BorderLayout());
+		setBorder(new BevelBorder(BevelBorder.LOWERED));
+		setBackground(Color.LIGHT_GRAY);
 		
 		mouseListener = new CardGameMouseAdapter();
 		initMouseInteractions(mouseListener);
 		
 		TestCard card = new TestCard();
 		add(card);
-		setBackground(Color.LIGHT_GRAY);
+		
 	}
 }

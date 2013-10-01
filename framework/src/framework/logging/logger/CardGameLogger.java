@@ -56,4 +56,8 @@ public class CardGameLogger {
 	public void trace(String msg) {
 		logger.log(Level.FINER, msg);
 	}
+	
+	public void setOutStreamLevel(Level level) {
+		logger.setLevel(level);
+	}
 }

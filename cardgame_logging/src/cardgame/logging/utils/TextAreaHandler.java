@@ -1,7 +1,7 @@
 /**
  * Created by MrE on 29 sep 2013
  */
-package cardgame.logging.logger;
+package cardgame.logging.utils;
 
 import java.io.PrintWriter;
 import java.io.StringWriter;

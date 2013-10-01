@@ -3,15 +3,19 @@
  */
 package cardgame.logging.gui;
 
+import java.awt.Component;
+import java.awt.Container;
 import java.awt.Dimension;
+import java.awt.LayoutManager;
 import java.awt.Toolkit;
+import java.util.logging.Level;
 
 import javax.swing.JFrame;
 import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
 import javax.swing.ScrollPaneConstants;
 
-import cardgame.logging.logger.TextAreaHandler;
+import cardgame.logging.utils.TextAreaHandler;
 import framework.logging.logger.CardGameLogger;
 
 public class LoggerWindow extends JFrame{
@@ -38,6 +42,8 @@ public class LoggerWindow extends JFrame{
 	}
 
 	private void initComponents() {
+		
+//		setLayout(new LayoutManager);
 		logger = CardGameLogger.getInstance(); //TODO: Start the logger service before the GUI component
 		loggerTextArea = new JTextArea();
 		loggerTextArea.setName("textArea");
@@ -52,7 +58,7 @@ public class LoggerWindow extends JFrame{
 		logger.addHandler(textAreaHandler);
 		getContentPane().add(loggerScrollPane);	
 		loggerScrollPane.getViewport().add(loggerTextArea);
-		
+		logger.setOutStreamLevel(Level.FINER);
 		logger.info("Initiate the Logger Window");
 	}
 }

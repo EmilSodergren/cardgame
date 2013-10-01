@@ -9,6 +9,7 @@ import java.awt.Graphics;
 import java.awt.Point;
 
 import cardgame.gui.base.CardBase;
+import framework.logging.logger.CardGameLogger;
 
 /**
  * 
@@ -16,9 +17,12 @@ import cardgame.gui.base.CardBase;
 public class TestCard extends CardBase {
 
 	private static final long serialVersionUID = 7612816210853534664L;
+	
+	private CardGameLogger logger = CardGameLogger.getInstance();
 
 	public TestCard() {
 		super(new Point(30,30), new Dimension(60, 100));
+		logger.info("TestCard created");
 	}
 	
 	@Override
