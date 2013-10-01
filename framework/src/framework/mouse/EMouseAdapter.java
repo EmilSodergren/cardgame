@@ -1,4 +1,4 @@
-package cardgame.mouse.interaction;
+package framework.mouse;
 
 import java.awt.event.MouseAdapter;
 
