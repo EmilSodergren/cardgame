@@ -6,8 +6,7 @@ import java.util.logging.Logger;
 
 public class CardGameLogger {
 
-	public final static Logger logger = Logger.getLogger(CardGameLogger.class.getName());
-
+	private final static Logger logger = Logger.getLogger(CardGameLogger.class.getName());
 	private static CardGameLogger cgLogger;
 
 	private CardGameLogger() {
