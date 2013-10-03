@@ -8,15 +8,15 @@ import java.awt.Toolkit;
 import java.util.logging.Level;
 
 import javax.swing.JFrame;
+import javax.swing.JPanel;
+import javax.swing.JRadioButton;
 import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
 import javax.swing.ScrollPaneConstants;
 
+//import net.miginfocom.swing.MigLayout;
 import cardgame.logging.utils.TextAreaHandler;
 import framework.logging.logger.CardGameLogger;
-import net.miginfocom.swing.MigLayout;
-import javax.swing.JRadioButton;
-import javax.swing.JPanel;
 
 public class LoggerWindow extends JFrame {
 
@@ -41,7 +41,7 @@ public class LoggerWindow extends JFrame {
 		Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
 		setSize(640, 320);
 		setLocation(screenSize.width - 640, 600);
-		getContentPane().setLayout(new MigLayout("insets 0 0 0 0", "[65][grow]", "[grow]"));
+//		getContentPane().setLayout(new MigLayout("insets 0 0 0 0", "[65][grow]", "[grow]"));
 
 		initComponents();
 
@@ -58,7 +58,7 @@ public class LoggerWindow extends JFrame {
 		panelButtons = new JPanel();
 		panelButtons.setName("panelButtons");
 		getContentPane().add(panelButtons, "cell 0 0,growy");
-		panelButtons.setLayout(new MigLayout("insets 5 0 5 0, gapy 15", "[65]", "[24px][24px][24px][24px][24px][grow]"));
+//		panelButtons.setLayout(new MigLayout("insets 5 0 5 0, gapy 15", "[65]", "[24px][24px][24px][24px][24px][grow]"));
 
 		radiobuttonError = new JRadioButton("Error");
 		panelButtons.add(radiobuttonError, "cell 0 0");
