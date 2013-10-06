@@ -14,6 +14,7 @@ import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
 import javax.swing.ScrollPaneConstants;
 
+import net.miginfocom.swing.MigLayout;
 //import net.miginfocom.swing.MigLayout;
 import cardgame.logging.utils.TextAreaHandler;
 import framework.logging.logger.CardGameLogger;
@@ -41,7 +42,7 @@ public class LoggerWindow extends JFrame {
 		Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
 		setSize(640, 320);
 		setLocation(screenSize.width - 640, 600);
-//		getContentPane().setLayout(new MigLayout("insets 0 0 0 0", "[65][grow]", "[grow]"));
+		getContentPane().setLayout(new MigLayout("insets 0 0 0 0", "[65][grow]", "[grow]"));
 
 		initComponents();
 
@@ -50,15 +51,10 @@ public class LoggerWindow extends JFrame {
 
 	private void initComponents() {
 
-		// setLayout(new LayoutManager);
-		logger = CardGameLogger.getInstance(); // TODO: Start the logger service
-												// before the GUI component
-		logger.addHandler(textAreaHandler);
-
 		panelButtons = new JPanel();
 		panelButtons.setName("panelButtons");
 		getContentPane().add(panelButtons, "cell 0 0,growy");
-//		panelButtons.setLayout(new MigLayout("insets 5 0 5 0, gapy 15", "[65]", "[24px][24px][24px][24px][24px][grow]"));
+		panelButtons.setLayout(new MigLayout("insets 5 0 5 0, gapy 15", "[65]", "[24px][24px][24px][24px][24px][grow]"));
 
 		radiobuttonError = new JRadioButton("Error");
 		panelButtons.add(radiobuttonError, "cell 0 0");
@@ -79,6 +75,7 @@ public class LoggerWindow extends JFrame {
 		radioButtonTrace = new JRadioButton("Trace");
 		panelButtons.add(radioButtonTrace, "cell 0 4");
 		radioButtonTrace.setName("radioButtonTrace");
+		
 		loggerTextArea = new JTextArea();
 		loggerTextArea.setName("textArea");
 		loggerTextArea.setVisible(true);
@@ -87,8 +84,11 @@ public class LoggerWindow extends JFrame {
 		getContentPane().add(loggerScrollPane, "cell 1 0,grow");
 		loggerScrollPane.setName("scrollPane");
 		loggerScrollPane.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
-
+		
+		logger = CardGameLogger.getInstance(); // TODO: Start the logger service before the GUI component
 		textAreaHandler = new TextAreaHandler(loggerTextArea);
+		logger.addHandler(textAreaHandler);
+
 		loggerScrollPane.setViewportView(loggerTextArea);
 		logger.setOutStreamLevel(Level.FINER);
 		logger.info("Initiate the Logger Window");
