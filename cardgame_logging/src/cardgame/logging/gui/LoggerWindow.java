@@ -42,7 +42,7 @@ public class LoggerWindow extends JFrame {
 		Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
 		setSize(640, 320);
 		setLocation(screenSize.width - 640, 600);
-		getContentPane().setLayout(new MigLayout("insets 0 0 0 0", "[65][grow]", "[grow]"));
+		setLayout(new MigLayout("insets 0 0 0 0", "[65][grow]", "[grow]"));
 
 		initComponents();
 
@@ -81,7 +81,7 @@ public class LoggerWindow extends JFrame {
 		loggerTextArea.setVisible(true);
 
 		loggerScrollPane = new JScrollPane();
-		getContentPane().add(loggerScrollPane, "cell 1 0,grow");
+		add(loggerScrollPane, "cell 1 0,grow");
 		loggerScrollPane.setName("scrollPane");
 		loggerScrollPane.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
 		
