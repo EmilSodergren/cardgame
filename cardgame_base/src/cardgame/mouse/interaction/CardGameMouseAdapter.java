@@ -25,4 +25,9 @@ public class CardGameMouseAdapter extends EMouseAdapter {
 	public void mouseClicked(MouseEvent e) {
 		logger.trace(e.getPoint().toString());
 	}
+
+	@Override
+	public void mouseExited(MouseEvent e) {
+		logger.trace("Out of window");
+	}
 }
