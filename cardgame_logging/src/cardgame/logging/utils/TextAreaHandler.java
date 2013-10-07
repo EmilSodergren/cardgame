@@ -12,28 +12,27 @@ import javax.swing.JTextArea;
 import javax.swing.SwingUtilities;
 
 public class TextAreaHandler extends Handler {
-	
+
 	JTextArea textArea;
-	
+
 	public TextAreaHandler(JTextArea textArea) {
 		this.textArea = textArea;
 	}
-	
+
 	/**
-     * {@inheritDoc}
-     */
+	 * {@inheritDoc}
+	 */
 	@Override
 	public void publish(final LogRecord record) {
 		SwingUtilities.invokeLater(new Runnable() {
 
 			@Override
 			public void run() {
-                StringWriter text = new StringWriter();
-                PrintWriter out = new PrintWriter(text);
-                out.println(textArea.getText());
-                out.printf("[%s] [Thread-%d]: -> %s", record.getLevel(),
-                        record.getThreadID(), record.getMessage());
-                textArea.setText(text.toString());
+				StringWriter text = new StringWriter();
+				PrintWriter out = new PrintWriter(text);
+				out.println(textArea.getText());
+				out.printf("[%s] [Thread-%d] %s: -> %s", record.getLevel(), record.getThreadID(), record.getSourceClassName(), record.getMessage());
+				textArea.setText(text.toString());
 			}
 		});
 	}
@@ -41,7 +40,7 @@ public class TextAreaHandler extends Handler {
 	@Override
 	public void flush() {
 	}
-	
+
 	@Override
 	public void close() throws SecurityException {
 	}

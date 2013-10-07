@@ -20,7 +20,7 @@ public class TestWindow extends EFrame {
 
 	private static final long serialVersionUID = 1742936565714076461L;
 	
-	public CardGameLogger logger = CardGameLogger.getInstance();
+	private CardGameLogger logger = new CardGameLogger(getClass());
 
 	public TestWindow() {
 		super("TestWindow");

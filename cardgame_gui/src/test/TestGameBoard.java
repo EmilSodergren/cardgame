@@ -16,7 +16,7 @@ public class TestGameBoard extends EPanel {
 
 	private static final long serialVersionUID = 9066548687077615194L;
 	
-	private CardGameLogger logger = CardGameLogger.getInstance();
+	private CardGameLogger logger = new CardGameLogger(getClass());
 	
 	CardGameMouseAdapter mouseListener;
 	

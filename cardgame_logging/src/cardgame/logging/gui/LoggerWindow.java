@@ -85,7 +85,7 @@ public class LoggerWindow extends JFrame {
 		loggerScrollPane.setName("scrollPane");
 		loggerScrollPane.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
 		
-		logger = CardGameLogger.getInstance(); // TODO: Start the logger service before the GUI component
+		logger = new CardGameLogger(getClass());// TODO: Start the logger service before the GUI component
 		textAreaHandler = new TextAreaHandler(loggerTextArea);
 		logger.addHandler(textAreaHandler);
 

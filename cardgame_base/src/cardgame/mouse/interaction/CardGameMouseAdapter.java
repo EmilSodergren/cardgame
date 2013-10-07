@@ -10,7 +10,7 @@ import framework.mouse.EMouseAdapter;
 
 public class CardGameMouseAdapter extends EMouseAdapter {
 	
-	CardGameLogger logger = CardGameLogger.getInstance();
+	private CardGameLogger logger = new CardGameLogger(getClass());
 	
 	public CardGameMouseAdapter() {
 		

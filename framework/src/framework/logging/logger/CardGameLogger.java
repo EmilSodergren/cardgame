@@ -7,16 +7,12 @@ import java.util.logging.Logger;
 public class CardGameLogger {
 
 	private final static Logger logger = Logger.getLogger(CardGameLogger.class.getName());
-	private static CardGameLogger cgLogger;
 
-	private CardGameLogger() {
-	}
-
-	public static CardGameLogger getInstance() {
-		if (cgLogger == null) {
-			cgLogger = new CardGameLogger();
-		}
-		return cgLogger;
+	String className;
+	String methodName = null;
+	
+	public CardGameLogger(Class<?> theClass) {
+		this.className = theClass.getSimpleName();
 	}
 
 	public boolean addHandler(Handler loggerHandler) {
@@ -34,27 +30,27 @@ public class CardGameLogger {
 	}
 
 	public void log(Level lvl, String msg) {
-		logger.log(lvl, msg);
+		logger.logp(lvl, className, methodName, msg);
 	}
 
 	public void err(String msg) {
-		logger.log(Level.SEVERE, msg);
+		logger.logp(Level.SEVERE, className, methodName, msg);
 	}
 
 	public void warn(String msg) {
-		logger.log(Level.WARNING, msg);
+		logger.logp(Level.WARNING, className, methodName, msg);
 	}
 
 	public void info(String msg) {
-		logger.log(Level.INFO, msg);
+		logger.logp(Level.INFO, className, methodName, msg);
 	}
 	
 	public void debug(String msg) {
-		logger.log(Level.FINE, msg);
+		logger.logp(Level.FINE, className, methodName, msg);
 	}
 	
 	public void trace(String msg) {
-		logger.log(Level.FINER, msg);
+		logger.logp(Level.FINER, className, methodName, msg);
 	}
 	
 	public void setOutStreamLevel(Level level) {
