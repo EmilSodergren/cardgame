@@ -1,7 +1,7 @@
 /**
  * Created by MrE on 29 sep 2013
  */
-package test;
+package cardgame.graphics.testgui;
 
 import java.awt.Color;
 import java.awt.Dimension;

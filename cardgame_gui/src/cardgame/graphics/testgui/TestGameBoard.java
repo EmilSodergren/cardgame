@@ -1,7 +1,7 @@
 /**
  * Created by MrE on 1 okt 2013
  */
-package test;
+package cardgame.graphics.testgui;
 
 import java.awt.BorderLayout;
 import java.awt.Color;
