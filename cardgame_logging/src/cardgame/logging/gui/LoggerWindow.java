@@ -7,7 +7,6 @@ import java.awt.Dimension;
 import java.awt.Toolkit;
 import java.util.logging.Level;
 
-import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.JRadioButton;
 import javax.swing.JScrollPane;
@@ -17,9 +16,10 @@ import javax.swing.ScrollPaneConstants;
 import net.miginfocom.swing.MigLayout;
 //import net.miginfocom.swing.MigLayout;
 import cardgame.logging.utils.TextAreaHandler;
+import framework.graphics.guicomponents.EFrame;
 import framework.logging.logger.CardGameLogger;
 
-public class LoggerWindow extends JFrame {
+public class LoggerWindow extends EFrame {
 
 	private static final long serialVersionUID = 2464154933560375812L;
 
