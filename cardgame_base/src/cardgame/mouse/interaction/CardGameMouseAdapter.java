@@ -23,7 +23,7 @@ public class CardGameMouseAdapter extends EMouseAdapter {
 	
 	@Override
 	public void mouseClicked(MouseEvent e) {
-		logger.trace(e.getPoint().toString());
+		logger.debug(e.getPoint().toString());
 	}
 
 	@Override
