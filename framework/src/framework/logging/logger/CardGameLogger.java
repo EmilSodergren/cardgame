@@ -10,19 +10,21 @@ public class CardGameLogger {
 
 	String className;
 	String methodName = null;
+	Level lvl;
 	
 	public CardGameLogger(Class<?> theClass) {
 		this.className = theClass.getSimpleName();
+		this.lvl = Level.OFF;
 	}
 
 	public boolean addHandler(Handler loggerHandler) {
 		for (Handler handler : logger.getHandlers()) {
 			if (handler.equals(loggerHandler)) {
-				return false;
+				return false; // Handler already exists
 			}
 		}
 		logger.addHandler(loggerHandler);
-		return true;
+		return true; // New handler added
 	}
 
 	public void removeHandler(Handler handler) {
@@ -34,7 +36,7 @@ public class CardGameLogger {
 	}
 
 	public void err(String msg) {
-		logger.logp(Level.SEVERE, className, methodName, msg);
+		logger.logp(lvl, className, methodName, msg);
 	}
 
 	public void warn(String msg) {
@@ -53,7 +55,7 @@ public class CardGameLogger {
 		logger.logp(Level.FINER, className, methodName, msg);
 	}
 	
-	public void setOutStreamLevel(Level level) {
+	public void setLevel(Level level) {
 		logger.setLevel(level);
 	}
 }

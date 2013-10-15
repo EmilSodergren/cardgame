@@ -5,9 +5,17 @@ package framework.cardgame.mvcbase;
 
 import java.beans.PropertyChangeEvent;
 
-public class AbstractView {
+import javax.swing.JComponent;
 
-	public void update(PropertyChangeEvent evt) {
+public class AbstractView extends JComponent {
+
+	private static final long serialVersionUID = -6020340794725165604L;
+
+	public void addModelListener(AbstractView view) {
+		
+	}
+	
+	public void update(PropertyChangeEvent evt){
 		
 	}
 }

@@ -23,6 +23,8 @@ public class TestCard extends CardBase {
 	public TestCard() {
 		super(new Point(30,30), new Dimension(60, 100));
 		logger.info("TestCard created");
+		
+//		addMod
 	}
 	
 	@Override

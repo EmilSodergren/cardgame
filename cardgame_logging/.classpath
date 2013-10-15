@@ -9,5 +9,6 @@
 	</classpathentry>
 	<classpathentry kind="lib" path="/cardgame_framework/miglayout15-swing.jar"/>
 	<classpathentry kind="lib" path="/cardgame_framework/miglayout-src.zip"/>
+	<classpathentry combineaccessrules="false" kind="src" path="/cardgame_base"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

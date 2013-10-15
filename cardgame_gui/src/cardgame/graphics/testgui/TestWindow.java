@@ -8,7 +8,9 @@ import java.awt.Toolkit;
 
 import javax.swing.JFrame;
 
+import cardgame.logging.controller.LoggerController;
 import cardgame.logging.gui.LoggerWindow;
+import cardgame.model.logger.CardGameLoggerModel;
 import framework.graphics.guicomponents.EFrame;
 import framework.logging.logger.CardGameLogger;
 
@@ -35,7 +37,10 @@ public class TestWindow extends EFrame {
 	}
 
 	public static void main(String[] args) {
-		new LoggerWindow();
+		CardGameLoggerModel loggerModel = new CardGameLoggerModel();
+		LoggerWindow loggerView = new LoggerWindow();
+		LoggerController loggerController = new LoggerController(loggerView, loggerModel);
+		
 		TestWindow window = new TestWindow();
 		TestGameBoard gameBoard = new TestGameBoard();
 		window.add(gameBoard);
