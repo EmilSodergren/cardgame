@@ -4,17 +4,19 @@ import java.util.logging.Handler;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-public class CardGameLogger {
+import framework.cardgame.mvcbase.AbstractModel;
+
+public class CardGameLogger extends AbstractModel{
 
 	private final static Logger logger = Logger.getLogger(CardGameLogger.class.getName());
 
 	String className;
 	String methodName = null;
-	Level lvl;
+	Level level;
 	
 	public CardGameLogger(Class<?> theClass) {
 		this.className = theClass.getSimpleName();
-		this.lvl = Level.OFF;
+		this.level = Level.OFF;
 	}
 
 	public boolean addHandler(Handler loggerHandler) {
@@ -36,7 +38,7 @@ public class CardGameLogger {
 	}
 
 	public void err(String msg) {
-		logger.logp(lvl, className, methodName, msg);
+		logger.logp(level, className, methodName, msg);
 	}
 
 	public void warn(String msg) {
@@ -55,7 +57,10 @@ public class CardGameLogger {
 		logger.logp(Level.FINER, className, methodName, msg);
 	}
 	
-	public void setLevel(Level level) {
+	public void setLevel(Level newLevel) {
+		Level oldValue = level;
+		level = newLevel;
+		firePropertyChange("level", oldValue, level);
 		logger.setLevel(level);
 	}
 }

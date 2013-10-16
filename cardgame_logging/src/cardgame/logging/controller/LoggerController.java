@@ -10,34 +10,33 @@ import java.beans.PropertyChangeListener;
 import java.util.logging.Level;
 
 import cardgame.logging.gui.LoggerWindow;
-import cardgame.model.logger.CardGameLoggerModel;
+import framework.logging.logger.CardGameLogger;
 
 public class LoggerController {
 	
 	LoggerWindow view;
-	CardGameLoggerModel model;
+	CardGameLogger model;
 	
-	public LoggerController(LoggerWindow view, CardGameLoggerModel model) {
+	public LoggerController(LoggerWindow view, CardGameLogger model) {
 		this.view = view;
 		this.model = model;
 		
-		this.view.addLevelChangerListener(new LoggerLevelChanger());
-		this.model.addLoggerModelListener(new PropertyChangeListener() {
+		view.addLevelChangerListener(new LoggerLevelChanger());
+		model.addPropertyChangeListener(new PropertyChangeListener() {
 			
 			@Override
 			public void propertyChange(PropertyChangeEvent evt) {
-				System.out.println("This Is Awesome!!! " + evt.getPropertyName());
-				
+				System.out.println("This Is Awesome!!! " + evt.getPropertyName());	
 			}
 		});
 	}
 	
-	public class LoggerLevelChanger implements ActionListener {
+	private class LoggerLevelChanger implements ActionListener {
 
 		@Override
 		public void actionPerformed(ActionEvent e) {
 			System.out.println("Setting Off in Model");
-			model.setLevel(Level.OFF);
+			model.setLevel(Level.FINER);
 		}
 	}
 }

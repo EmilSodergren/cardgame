@@ -6,7 +6,6 @@ package cardgame.logging.gui;
 import java.awt.Dimension;
 import java.awt.Toolkit;
 import java.awt.event.ActionListener;
-import java.util.logging.Level;
 
 import javax.swing.JPanel;
 import javax.swing.JRadioButton;
@@ -99,11 +98,7 @@ public class LoggerWindow extends EFrame {
 		logger.info("Initiate the Logger Window");
 	}
 	
-	public void setLoggerLevel(Level lvl) {
-		logger.setLevel(lvl);
-	}
-	
 	public void addLevelChangerListener(ActionListener l) {
-		radioButtonOff.addActionListener(l);
+		radioButtonTrace.addActionListener(l);
 	}
 }

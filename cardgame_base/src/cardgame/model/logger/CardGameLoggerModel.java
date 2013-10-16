@@ -3,24 +3,29 @@
  */
 package cardgame.model.logger;
 
-import java.beans.PropertyChangeListener;
-import java.beans.PropertyChangeSupport;
+import java.beans.PropertyChangeEvent;
 import java.util.logging.Handler;
 import java.util.logging.Level;
 
-public class CardGameLoggerModel {
+import framework.cardgame.mvcbase.AbstractModel;
+import framework.logging.logger.CardGameLogger;
+
+public class CardGameLoggerModel extends AbstractModel {
 	
 	private Level level;
 	private Handler loggerHandler;
-	private PropertyChangeSupport pcs;
+	CardGameLogger logger = new CardGameLogger(CardGameLoggerModel.class);
 	
 	public CardGameLoggerModel() {
+		super();
 		level = Level.OFF;
-		pcs = new PropertyChangeSupport(this.level);
 	}
 	
-	public void setLevel(Level l) {
-		level = l;
+	public void setLevel(Level newLevel) {
+		Level oldValue = level;
+		level = newLevel;
+		PropertyChangeEvent pce = new PropertyChangeEvent(this, "level", oldValue, level);
+		propertyChangeSupport.firePropertyChange(pce);
 	}
 	
 	public Level getLevel() {
@@ -33,9 +38,5 @@ public class CardGameLoggerModel {
 
 	public void setLoggerHandler(Handler loggerHandler) {
 		this.loggerHandler = loggerHandler;
-	}
-	
-	public void addLoggerModelListener(PropertyChangeListener pce) {
-		pcs.addPropertyChangeListener(pce);
 	}
 }
