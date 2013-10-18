@@ -20,7 +20,6 @@ import javax.swing.ScrollPaneConstants;
 import net.miginfocom.swing.MigLayout;
 //import net.miginfocom.swing.MigLayout;
 import cardgame.logging.utils.TextAreaHandler;
-import framework.cardgame.mvcbase.interfaces.IViewListener;
 import framework.graphics.guicomponents.EFrame;
 import framework.logging.logger.CardGameLogger;
 
