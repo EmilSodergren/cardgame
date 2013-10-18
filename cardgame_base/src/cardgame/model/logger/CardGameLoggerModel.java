@@ -7,7 +7,7 @@ import java.beans.PropertyChangeEvent;
 import java.util.logging.Handler;
 import java.util.logging.Level;
 
-import framework.cardgame.mvcbase.AbstractModel;
+import framework.cardgame.mvcbase.abstracts.AbstractModel;
 import framework.logging.logger.CardGameLogger;
 
 public class CardGameLoggerModel extends AbstractModel {

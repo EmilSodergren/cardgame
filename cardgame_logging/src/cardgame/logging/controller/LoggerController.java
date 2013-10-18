@@ -3,40 +3,19 @@
  */
 package cardgame.logging.controller;
 
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.beans.PropertyChangeEvent;
-import java.beans.PropertyChangeListener;
-import java.util.logging.Level;
-
 import cardgame.logging.gui.LoggerWindow;
+import framework.cardgame.mvcbase.abstracts.AbstractController;
 import framework.logging.logger.CardGameLogger;
 
-public class LoggerController {
-	
-	LoggerWindow view;
-	CardGameLogger model;
+public class LoggerController extends AbstractController {
 	
 	public LoggerController(LoggerWindow view, CardGameLogger model) {
-		this.view = view;
-		this.model = model;
-		
-		view.addLevelChangerListener(new LoggerLevelChanger());
-		model.addPropertyChangeListener(new PropertyChangeListener() {
-			
-			@Override
-			public void propertyChange(PropertyChangeEvent evt) {
-				System.out.println("This Is Awesome!!! " + evt.getPropertyName());	
-			}
-		});
+		addView(view);
+		addModel(model);
 	}
-	
-	private class LoggerLevelChanger implements ActionListener {
 
-		@Override
-		public void actionPerformed(ActionEvent e) {
-			System.out.println("Setting Off in Model");
-			model.setLevel(Level.FINER);
-		}
+	@Override
+	public void onViewEvent(String propertyName, Object newValue) {
+		setModelProperty(propertyName, newValue);
 	}
 }
