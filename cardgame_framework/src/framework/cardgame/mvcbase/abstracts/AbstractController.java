@@ -36,6 +36,7 @@ public abstract class AbstractController implements PropertyChangeListener, IVie
 	public void addView(AbstractView view) {
 		registeredViews.add(view);
 		view.addViewListener(this);
+		view.setDefaults();
 	}
 
 	public void removeView(AbstractView view) {
