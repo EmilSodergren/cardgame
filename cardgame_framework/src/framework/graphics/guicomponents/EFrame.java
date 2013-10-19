@@ -43,4 +43,8 @@ public abstract class EFrame extends JFrame implements AbstractView {
 	public void addViewListener(IViewListener vl) {
 		controller = vl;
 	}
+	
+	public void setDefaults() {
+		// Don't do anything
+	}
 }

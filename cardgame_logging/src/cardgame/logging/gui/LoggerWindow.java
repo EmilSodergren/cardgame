@@ -150,4 +150,9 @@ public class LoggerWindow extends EFrame {
 			}
 		}
 	}
+	
+	@Override
+	public void setDefaults() {
+		controller.onViewEvent("Level", Level.INFO);
+	}
 }

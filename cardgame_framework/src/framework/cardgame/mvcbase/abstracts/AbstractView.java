@@ -17,4 +17,6 @@ public interface AbstractView {
 	public void update(PropertyChangeEvent evt);
 	
 	public void addViewListener(IViewListener vl);
+	
+	public void setDefaults();
 }
