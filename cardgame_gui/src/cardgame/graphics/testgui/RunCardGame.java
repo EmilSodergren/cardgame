@@ -15,7 +15,7 @@ public class RunCardGame {
 	public static void main(String[] args) {
 		CardGameLogger loggerModel = new CardGameLogger(TestWindow.class);
 		LoggerWindow loggerView = new LoggerWindow();
-		new LoggerController(loggerView, loggerModel);
+		new LoggerController(loggerModel, loggerView);
 		
 		TestWindow window = new TestWindow();
 		TestGameBoard gameBoard = new TestGameBoard();

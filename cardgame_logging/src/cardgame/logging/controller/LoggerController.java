@@ -3,15 +3,14 @@
  */
 package cardgame.logging.controller;
 
-import framework.cardgame.mvcbase.abstracts.AbstractController;
+import cardgame.controller.base.ControllerBase;
 import framework.cardgame.mvcbase.abstracts.AbstractModel;
 import framework.cardgame.mvcbase.abstracts.AbstractView;
 
-public class LoggerController extends AbstractController {
+public class LoggerController extends ControllerBase {
 	
-	public LoggerController(AbstractView view, AbstractModel model) {
-		addModel(model);
-		addView(view);
+	public LoggerController(AbstractModel model, AbstractView view) {
+		super(model, view);
 	}
 
 	@Override
