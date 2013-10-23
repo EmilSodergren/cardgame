@@ -16,7 +16,6 @@ public class CardGameLogger extends AbstractModel {
 	
 	public CardGameLogger(Class<?> theClass) {
 		this.className = theClass.getSimpleName();
-		this.level = Level.OFF;
 		logger.info("Logger instantiated with " + theClass.getSimpleName());
 	}
 
