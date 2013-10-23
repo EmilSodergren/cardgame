@@ -5,5 +5,8 @@
 	<classpathentry combineaccessrules="false" kind="src" path="/cardgame_framework"/>
 	<classpathentry combineaccessrules="false" kind="src" path="/cardgame_logging"/>
 	<classpathentry combineaccessrules="false" kind="src" path="/cardgame_base"/>
+	<classpathentry combineaccessrules="false" kind="src" path="/cardgame_cards"/>
+	<classpathentry kind="lib" path="/cardgame_framework/miglayout-src.zip"/>
+	<classpathentry kind="lib" path="/cardgame_framework/miglayout15-swing.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

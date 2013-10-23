@@ -3,35 +3,19 @@
  */
 package cardgame.graphics.testgui;
 
-import java.awt.Color;
-import java.awt.Dimension;
-import java.awt.Graphics;
-import java.awt.Point;
+import java.awt.Image;
 
-import cardgame.gui.base.CardBase;
-import framework.logging.logger.CardGameLogger;
+import cardgame.cards.gui.CardGuiBase;
 
-public class TestCard extends CardBase {
-
-	private static final long serialVersionUID = 7612816210853534664L;
+public class TestCard extends CardGuiBase{
 	
-	private CardGameLogger logger = new CardGameLogger(getClass());
+	private static final long serialVersionUID = 3059182549896122482L;
 
 	public TestCard() {
-		super(new Point(30,30), new Dimension(60, 100));
-		logger.info("TestCard created");
+		super("Card.png");
 	}
 	
-	@Override
-	public void paint(Graphics g) {
-		try {
-			g.setColor(new Color(0xFF0000));
-			g.fillRect(getPos().x, getPos().x, getDim().width, getDim().height);
-			g.setColor(new Color(0x00FF00));
-			g.drawRect(getPos().x, getPos().x, getDim().width, getDim().height);
-		} catch (NullPointerException e) {
-			System.out.println("CardBase.paint() : The position and dimension is not correctly set!");
-			e.fillInStackTrace();
-		}
+	public Image getImage() {
+		return bgImage;
 	}
 }

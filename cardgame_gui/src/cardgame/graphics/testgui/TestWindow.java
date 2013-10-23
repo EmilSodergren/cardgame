@@ -8,7 +8,6 @@ import java.awt.Toolkit;
 
 import javax.swing.JFrame;
 
-import framework.cardgame.mvcbase.interfaces.IViewListener;
 import framework.graphics.guicomponents.EFrame;
 import framework.logging.logger.CardGameLogger;
 
@@ -30,10 +29,6 @@ public class TestWindow extends EFrame {
 		Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
 		setLocation(screenSize.width - 800, 0);
 		setSize(new Dimension(800, 600));
-		setVisible(true);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 	}
-
-	@Override
-	public void addViewListener(IViewListener vl) {}
 }

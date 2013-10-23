@@ -19,6 +19,7 @@ public class RunCardGame {
 		
 		TestWindow window = new TestWindow();
 		TestGameBoard gameBoard = new TestGameBoard();
-		window.add(gameBoard);
+		window.setContentPane(gameBoard);
+		window.setVisible(true);
 	}
 }
