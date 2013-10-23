@@ -18,7 +18,6 @@ public class CardGameLoggerModel extends AbstractModel {
 	
 	public CardGameLoggerModel() {
 		super();
-		level = Level.OFF;
 	}
 	
 	public void setLevel(Level newLevel) {
