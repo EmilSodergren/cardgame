@@ -29,20 +29,21 @@ public class LoggerWindow extends EFrame {
 
 	private JTextArea loggerTextArea;
 	private JScrollPane loggerScrollPane;
-	private CardGameLogger logger;
+	private CardGameLogger logger = new CardGameLogger(LoggerWindow.class);
 
 	private TextAreaHandler textAreaHandler;
-	
+
 	private JPanel panelButtons;
-	
+
 	private HashMap<Level, JRadioButton> radioButtonMap;
-	
+
 	private JRadioButton radioButtonError;
 	private JRadioButton radioButtonWarning;
 	private JRadioButton radioButtonInfo;
 	private JRadioButton radioButtonDebug;
 	private JRadioButton radioButtonTrace;
 	private JRadioButton radioButtonOff;
+	private JRadioButton radioButtonAll;
 
 	public LoggerWindow() {
 		super("Log");
@@ -63,10 +64,10 @@ public class LoggerWindow extends EFrame {
 		panelButtons = new JPanel();
 		panelButtons.setName("panelButtons");
 		getContentPane().add(panelButtons, "cell 0 0,growy");
-		panelButtons.setLayout(new MigLayout("insets 5 0 5 0, gapy 15", "[65]", "[24px][24px][24px][24px][24px][24px][grow]"));
-		
+		panelButtons.setLayout(new MigLayout("insets 5 0 5 0, gapy 15", "[65]", "[24px][24px][24px][24px][24px][24px][24px]"));
+
 		radioButtonMap = new HashMap<Level, JRadioButton>(6);
-		
+
 		radioButtonOff = new JRadioButton("Off");
 		radioButtonOff.setName("radioButtonOff");
 		radioButtonOff.addActionListener(new ButtonAL(Level.OFF));
@@ -102,7 +103,13 @@ public class LoggerWindow extends EFrame {
 		radioButtonTrace.setName("radioButtonTrace");
 		radioButtonMap.put(Level.FINER, radioButtonTrace);
 		radioButtonTrace.addActionListener(new ButtonAL(Level.FINER));
-		
+
+		radioButtonAll = new JRadioButton("All");
+		radioButtonAll.setName("radioButtonAll");
+		panelButtons.add(radioButtonAll, "cell 0 6");
+		radioButtonMap.put(Level.ALL, radioButtonAll);
+		radioButtonAll.addActionListener(new ButtonAL(Level.ALL));
+
 		loggerTextArea = new JTextArea();
 		loggerTextArea.setName("textArea");
 
@@ -110,38 +117,35 @@ public class LoggerWindow extends EFrame {
 		getContentPane().add(loggerScrollPane, "cell 1 0,grow");
 		loggerScrollPane.setName("scrollPane");
 		loggerScrollPane.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
-		
+
 		textAreaHandler = new TextAreaHandler(loggerTextArea);
-		
-		logger = new CardGameLogger(getClass());// TODO: Start the logger service before the GUI component
+
 		logger.addHandler(textAreaHandler);
 
 		loggerScrollPane.setViewportView(loggerTextArea);
 		logger.info("Initiate the Logger Window");
 	}
-	
-	
-	
+
 	private class ButtonAL implements ActionListener {
 
 		Level level;
-		
+
 		ButtonAL(Level level) {
 			this.level = level;
 		}
-		
+
 		@Override
 		public void actionPerformed(ActionEvent e) {
-			logger.debug("Pressed " + level.toString());
+			logger.log(Level.OFF, "Pressed " + level.toString());
 			controller.onViewEvent("Level", level);
 		}
 	}
-	
+
 	@Override
 	public void update(PropertyChangeEvent evt) {
 		if (evt.getNewValue() instanceof Level) {
-			Level newLevel = (Level) evt.getNewValue(); 
-			for(Level level : radioButtonMap.keySet()) {
+			Level newLevel = (Level) evt.getNewValue();
+			for (Level level : radioButtonMap.keySet()) {
 				if (level.equals(newLevel)) {
 					radioButtonMap.get(level).setSelected(true);
 				} else {
@@ -150,9 +154,9 @@ public class LoggerWindow extends EFrame {
 			}
 		}
 	}
-	
+
 	@Override
 	public void setDefaults() {
-		controller.onViewEvent("Level", Level.INFO);
+		controller.onViewEvent("Level", Level.ALL);
 	}
 }
