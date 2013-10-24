@@ -136,7 +136,7 @@ public class LoggerWindow extends EFrame {
 
 		@Override
 		public void actionPerformed(ActionEvent e) {
-			logger.log(Level.OFF, "Pressed " + level.toString());
+			logger.log(Level.WARNING, "Pressed " + level.toString());
 			controller.onViewEvent("Level", level);
 		}
 	}
