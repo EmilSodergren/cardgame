@@ -3,9 +3,14 @@
  */
 package cardgame.graphics.testgui;
 
-import java.awt.Color;
 import java.awt.Graphics;
+import java.awt.Image;
+import java.io.IOException;
+import java.util.ArrayList;
 
+import javax.imageio.ImageIO;
+
+import cardgame.cards.gui.CardGuiBase;
 import cardgame.mouse.interaction.CardGameMouseAdapter;
 import framework.graphics.guicomponents.EPanel;
 import framework.logging.logger.CardGameLogger;
@@ -18,11 +23,19 @@ public class TestGameBoard extends EPanel {
 
 	private CardGameMouseAdapter mouseListener = new CardGameMouseAdapter();
 	
-	TestCard tc;
+	private Image boardImage;
+	private ArrayList<CardGuiBase> cards = new ArrayList<CardGuiBase>();
 
 	public TestGameBoard() {
 		super();
-		tc = new TestCard();
+		cards.add(new TestCard());
+		cards.add(new TestCard("card-v2.png"));
+		String filePath = "cardgame/graphics/resources/background-small.png";
+		try {
+			boardImage = ImageIO.read(TestGameBoard.class.getClassLoader().getResource(filePath));
+		} catch (IOException e) {
+			logger.err(String.format("The file %s can not be found!", filePath));
+		}
 		initComponents();
 	}
 
@@ -30,12 +43,14 @@ public class TestGameBoard extends EPanel {
 		setName(TestGameBoard.class.getName());
 		logger.info("TestGameBoard panel created");
 		initMouseInteractions(mouseListener);
-		setBackground(Color.yellow);
 	}
 	
 	@Override
 	public void paintComponent(Graphics g) {
 		super.paintComponent(g);
-		g.drawImage(tc.getImage(), 100, 100, null);
+		g.drawImage(boardImage, 0, 0, null);
+		for (CardGuiBase card : cards) {
+			card.paint(g);
+		}
 	}
 }
