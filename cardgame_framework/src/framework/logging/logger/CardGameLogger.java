@@ -38,7 +38,7 @@ public class CardGameLogger extends AbstractModel {
 	}
 
 	public void err(String msg) {
-		logger.logp(level, className, methodName, msg);
+		logger.logp(Level.SEVERE, className, methodName, msg);
 	}
 
 	public void warn(String msg) {
