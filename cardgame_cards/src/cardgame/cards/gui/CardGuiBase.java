@@ -26,7 +26,9 @@ public class CardGuiBase extends EComponent {
 		try {
 			bgImage = ImageIO.read(CardGuiBase.class.getClassLoader().getResource(filePath));
 		} catch (IOException e) {
-			logger.err(String.format("The file %s can not be found!", filePath));
+			e.printStackTrace();
+		} catch (IllegalArgumentException e) {
+			logger.err(String.format("The file on path: \n%s\n can not be found!", filePath));
 		}
 	}
 	
