@@ -44,19 +44,25 @@ public class LoggerWindow extends EFrame {
 	private JRadioButton radioButtonTrace;
 	private JRadioButton radioButtonOff;
 	private JRadioButton radioButtonAll;
+	
+	private Level defaultLevel;
 
 	public LoggerWindow() {
+		this(Level.ALL);
+	}
+	
+	public LoggerWindow(Level defaultLevel) {
 		super("Log");
 		setName(getName());
 
 		Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
-		setSize(640, 320);
-		setLocation(screenSize.width - 640, 600);
+		setSize(800, 400);
+		setLocation(screenSize.width - 800, 600);
 		getContentPane().setLayout(new MigLayout("insets 0 0 0 0", "[65][grow]", "[grow]"));
 
 		initComponents();
-
-		this.setVisible(true);
+		
+		this.defaultLevel = defaultLevel;
 	}
 
 	private void initComponents() {
@@ -136,14 +142,14 @@ public class LoggerWindow extends EFrame {
 
 		@Override
 		public void actionPerformed(ActionEvent e) {
-			logger.log(Level.WARNING, "Pressed " + level.toString());
+			logger.log(Level.OFF, "Pressed " + level.toString());
 			controller.onViewEvent("Level", level);
 		}
 	}
 
 	@Override
 	public void update(PropertyChangeEvent evt) {
-		if (evt.getNewValue() instanceof Level) {
+		if (evt.getPropertyName().equalsIgnoreCase("level")) {
 			Level newLevel = (Level) evt.getNewValue();
 			for (Level level : radioButtonMap.keySet()) {
 				if (level.equals(newLevel)) {
@@ -157,6 +163,6 @@ public class LoggerWindow extends EFrame {
 
 	@Override
 	public void setDefaults() {
-		controller.onViewEvent("Level", Level.ALL);
+		controller.onViewEvent("Level", defaultLevel);
 	}
 }
