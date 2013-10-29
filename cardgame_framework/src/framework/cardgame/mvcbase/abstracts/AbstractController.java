@@ -42,6 +42,10 @@ public abstract class AbstractController implements PropertyChangeListener, IVie
 	public void removeView(AbstractView view) {
 		registeredViews.remove(view);
 	}
+	
+	public ArrayList<? extends AbstractView> getViews() {
+		return registeredViews;
+	}
 
 	// Use this to observe property changes from registered models
 	// and propagate them on to all the views.
