@@ -37,4 +37,6 @@ public class CardGuiBase extends EComponent {
 		super.paint(g);
 		g.drawImage(bgImage, 100, 100, null);
 	}
+	
+	
 }
