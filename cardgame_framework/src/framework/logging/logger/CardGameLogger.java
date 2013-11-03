@@ -57,10 +57,11 @@ public class CardGameLogger extends AbstractModel {
 		logger.logp(Level.FINER, className, methodName, msg);
 	}
 	
+	// TODO: Not so nice code. Probably it would be better to let the logger be a view that listens to this model. 
 	public void setLevel(Level newLevel) {
-		Level oldValue = level;
+		Level oldLevel = level;
 		level = newLevel;
-		firePropertyChange("level", oldValue, level);
+		firePropertyChange("level", oldLevel, level);
 		logger.setLevel(level);
 	}
 }

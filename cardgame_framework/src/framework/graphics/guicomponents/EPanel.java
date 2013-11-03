@@ -9,7 +9,6 @@ import javax.swing.JPanel;
 
 import framework.cardgame.mvcbase.abstracts.AbstractView;
 import framework.cardgame.mvcbase.interfaces.IViewListener;
-import framework.mouse.EMouseAdapter;
 
 public class EPanel extends JPanel implements AbstractView{
 
@@ -19,12 +18,6 @@ public class EPanel extends JPanel implements AbstractView{
 	
 	public EPanel() {
 		super();
-	}
-	
-	public void initMouseInteractions(EMouseAdapter adapter) {
-		super.addMouseListener(adapter);
-		super.addMouseMotionListener(adapter);
-		super.addMouseWheelListener(adapter);
 	}
 
 	@Override
