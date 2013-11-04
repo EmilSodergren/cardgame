@@ -51,6 +51,7 @@ public abstract class CardGuiBase extends EComponent {
 		} else
 		if (evt.getPropertyName().equalsIgnoreCase("focused")) {
 			focused = (Boolean) evt.getNewValue();
+			logger.debug("Focus changed to " + focused);
 		} else
 		if (evt.getPropertyName().equalsIgnoreCase("mainImagePath")) {
 			String imagePath = (String) evt.getNewValue();
