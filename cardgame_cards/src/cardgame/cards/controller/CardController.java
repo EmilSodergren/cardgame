@@ -3,10 +3,8 @@
  */
 package cardgame.cards.controller;
 
-import java.util.ArrayList;
-
-import cardgame.cards.gui.CardGuiBase;
 import cardgame.controller.base.ControllerBase;
+import cardgame.gui.base.CardGuiBase;
 import framework.cardgame.mvcbase.abstracts.AbstractModel;
 
 // TODO: Maybe make this class templated to avoid the unchecked cast??
@@ -20,11 +18,5 @@ public class CardController extends ControllerBase {
 	@Override
 	public void onViewEvent(String propertyName, Object newValue) {
 		setModelProperty(propertyName, newValue);
-	}
-	
-	@SuppressWarnings("unchecked")
-	@Override
-	public ArrayList<CardGuiBase> getViews() {
-		return (ArrayList<CardGuiBase>) super.getViews();
 	}
 }

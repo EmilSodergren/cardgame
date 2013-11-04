@@ -31,5 +31,4 @@ public class EComponent extends JComponent implements AbstractView {
 	@Override
 	public void setDefaults() {
 	}
-
 }

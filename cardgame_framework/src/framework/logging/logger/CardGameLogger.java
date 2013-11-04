@@ -2,13 +2,10 @@ package framework.logging.logger;
 
 import java.util.logging.Handler;
 import java.util.logging.Level;
-import java.util.logging.Logger;
 
 import framework.cardgame.mvcbase.abstracts.AbstractModel;
 
 public class CardGameLogger extends AbstractModel {
-
-	private final static Logger logger = Logger.getLogger(CardGameLogger.class.getName());
 
 	String className;
 	String methodName = null;

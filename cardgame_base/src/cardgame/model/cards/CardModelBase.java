@@ -12,6 +12,8 @@ public class CardModelBase extends AbstractModel {
 
 	private Point pos;
 	private Dimension size;
+	private String mainImagePath;
+	private String glowImagePath;
 	private boolean focused;
 
 	public CardModelBase() {
@@ -22,27 +24,33 @@ public class CardModelBase extends AbstractModel {
 		this.setSize(size);
 	}
 
-	public Point getPos() {
-		return pos;
+	public void setPos(Point newPos) {
+		Point oldPos = pos;
+		pos = newPos;
+		propertyChangeSupport.firePropertyChange("pos", oldPos, pos);
+	}
+	
+	public void setSize(Dimension newSize) {
+		Dimension oldSize = size;
+		size = newSize;
+		propertyChangeSupport.firePropertyChange("size", oldSize, size);
 	}
 
-	public void setPos(Point pos) {
-		this.pos = pos;
+	public void setFocused(Boolean newFocused) {
+		boolean oldFocused = focused;
+		focused = newFocused;
+		propertyChangeSupport.firePropertyChange("focused", oldFocused, focused);
 	}
 
-	public Dimension getSize() {
-		return size;
+	public void setMainImagePath(String newMainImagePath) {
+		String oldMainImagePath = mainImagePath;
+		mainImagePath = newMainImagePath;
+		propertyChangeSupport.firePropertyChange("mainImagePath", oldMainImagePath, mainImagePath);
 	}
 
-	public void setSize(Dimension size) {
-		this.size = size;
-	}
-
-	public boolean isFocused() {
-		return focused;
-	}
-
-	public void setFocused(boolean focused) {
-		this.focused = focused;
+	public void setGlowImagePath(String newGlowImagePath) {
+		String oldGlowImagePath = glowImagePath;
+		glowImagePath = newGlowImagePath;
+		propertyChangeSupport.firePropertyChange("glowImagePath", oldGlowImagePath, glowImagePath);
 	}
 }

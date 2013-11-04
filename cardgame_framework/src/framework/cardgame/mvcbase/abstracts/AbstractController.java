@@ -78,7 +78,7 @@ public abstract class AbstractController implements PropertyChangeListener, IVie
 				method.invoke(model, newValue);
 
 			} catch (Exception ex) {
-				logger.err(ex.getMessage());
+				logger.err("Can not invoke set" + propertyName + " in " + model.getClass().toString() + ". \n\t Exception message: " + ex.getMessage());
 			}
 		}
 	}
