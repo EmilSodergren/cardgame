@@ -29,6 +29,8 @@ public class TestGameBoard extends EPanel implements MouseListener, MouseMotionL
 	private Image boardImage;
 	private ArrayList<CardGuiBase> cards;
 	
+	private MouseEvent lastValidEvent;
+	
 	public TestGameBoard() {
 		super();
 		setName(TestGameBoard.class.getName());
@@ -97,6 +99,7 @@ public class TestGameBoard extends EPanel implements MouseListener, MouseMotionL
 	public void mouseDragged(MouseEvent e) {
 		logger.trace("mouseDragged: " + e.getPoint().toString());
 		if (this.contains(e.getPoint())) {
+			lastValidEvent = e;
 			for (CardGuiBase card : cards) {
 				card.mouseDragging(e);
 			}
@@ -129,7 +132,11 @@ public class TestGameBoard extends EPanel implements MouseListener, MouseMotionL
 	@Override
 	public void mouseReleased(MouseEvent e) {
 		for (CardGuiBase card : cards) {
-			card.mouseReleased(e);
+			if (this.contains(e.getPoint())) {
+				card.mouseReleased(e);
+			} else {
+				card.mouseReleased(lastValidEvent);
+			}
 		}
 		logger.debug("mouseReleased: " + e.getPoint().toString());
 	}
