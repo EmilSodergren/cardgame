@@ -14,7 +14,7 @@ public class CardModelBase extends AbstractModel {
 	private Dimension size;
 	private String mainImagePath;
 	private String glowImagePath;
-	private boolean focused;
+	private Boolean focused;
 
 	public CardModelBase() {
 	}
@@ -36,12 +36,6 @@ public class CardModelBase extends AbstractModel {
 		propertyChangeSupport.firePropertyChange("size", oldSize, size);
 	}
 
-	public void setFocused(Boolean newFocused) {
-		boolean oldFocused = focused;
-		focused = newFocused;
-		propertyChangeSupport.firePropertyChange("focused", oldFocused, focused);
-	}
-
 	public void setMainImagePath(String newMainImagePath) {
 		String oldMainImagePath = mainImagePath;
 		mainImagePath = newMainImagePath;
@@ -52,5 +46,11 @@ public class CardModelBase extends AbstractModel {
 		String oldGlowImagePath = glowImagePath;
 		glowImagePath = newGlowImagePath;
 		propertyChangeSupport.firePropertyChange("glowImagePath", oldGlowImagePath, glowImagePath);
+	}
+	
+	public void setFocused(Boolean newFocused) {
+		Boolean oldFocused = focused;
+		focused = newFocused;
+		propertyChangeSupport.firePropertyChange("focused", oldFocused, focused);
 	}
 }
