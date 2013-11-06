@@ -29,9 +29,6 @@ public class TestGameBoard extends EPanel implements MouseListener, MouseMotionL
 	private Image boardImage;
 	private ArrayList<CardGuiBase> cards;
 	
-	private boolean needRepaint;
-	private boolean isDragging;
-	
 	public TestGameBoard() {
 		super();
 		setName(TestGameBoard.class.getName());
@@ -45,8 +42,9 @@ public class TestGameBoard extends EPanel implements MouseListener, MouseMotionL
 	public void paintComponent(Graphics g) {
 		super.paintComponent(g);
 		g.drawImage(boardImage, 0, 0, null);
-		if (cards != null) {
-			for (CardGuiBase card : cards) {
+		if (cards != null) { // cards are painted backwards since the last card will be on top
+			for (int i = cards.size() ; i > 0 ; i--) {
+				CardGuiBase card = cards.get(i-1);
 				card.paint(g);
 			}
 		}
@@ -97,8 +95,13 @@ public class TestGameBoard extends EPanel implements MouseListener, MouseMotionL
 
 	@Override
 	public void mouseDragged(MouseEvent e) {
-		isDragging = true;
 		logger.trace("mouseDragged: " + e.getPoint().toString());
+		if (this.contains(e.getPoint())) {
+			for (CardGuiBase card : cards) {
+				card.mouseDragging(e);
+			}
+		}
+		repaint();
 	}
 
 	@Override
@@ -125,9 +128,8 @@ public class TestGameBoard extends EPanel implements MouseListener, MouseMotionL
 
 	@Override
 	public void mouseReleased(MouseEvent e) {
-		if (isDragging) {
-			controller.onViewEvent("Pos", new Point(100,100));
-			isDragging = false;
+		for (CardGuiBase card : cards) {
+			card.mouseReleased(e);
 		}
 		logger.debug("mouseReleased: " + e.getPoint().toString());
 	}
