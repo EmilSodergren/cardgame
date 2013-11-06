@@ -23,6 +23,9 @@ public abstract class CardGuiBase extends EComponent {
 	private Image mainImage;
 	private Image glowImage;
 	private Boolean focused = Boolean.FALSE;
+	private Boolean isDragging = Boolean.FALSE;
+	
+	private Point mouseOffset;
 	
 	public CardGuiBase() {
 		super();
@@ -71,9 +74,36 @@ public abstract class CardGuiBase extends EComponent {
 	 * 
 	 */
 	public void mouseMoved(MouseEvent e) {
-		controller.onViewEvent("Focused", Boolean.valueOf(this.contains(e.getPoint())));
+		if (!e.isConsumed()) {
+			boolean isHit = this.contains(e.getPoint());
+			controller.onViewEvent("Focused", Boolean.valueOf(isHit));
+			if (isHit) {
+				e.consume();
+			}
+		} else {
+			controller.onViewEvent("Focused", Boolean.FALSE);
+		}
 	}
 	
+	// MouseDragging is overriding MVC to make the card follow the mouse without messing with the model
+	
+	// TODO: Maybe override Point to get an offsetWith method 
+	public void mouseDragging(MouseEvent e) {
+		if (!isDragging) {
+			mouseOffset = new Point(e.getX() - getLocation().x, e.getY() - getLocation().y);
+		}
+		if (focused) {
+			isDragging = Boolean.TRUE;
+			setLocation(e.getPoint().x - mouseOffset.x, e.getPoint().y - mouseOffset.y);
+		}
+	}
+	// update the position in the model and let the card react to the position change
+	public void mouseReleased(MouseEvent e) {
+		if (isDragging) {
+			controller.onViewEvent("Pos", new Point(e.getPoint().x - mouseOffset.x, e.getPoint().y - mouseOffset.y));
+			isDragging = Boolean.FALSE;
+		}
+	}
 	
 	// TODO: Not memory efficient!!! This method will be triggered very often.
 	// Rewrite with local variables or something!
