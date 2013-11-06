@@ -30,6 +30,7 @@ public class TestGameBoard extends EPanel implements MouseListener, MouseMotionL
 	private ArrayList<CardGuiBase> cards;
 	
 	private boolean needRepaint;
+	private boolean isDragging;
 	
 	public TestGameBoard() {
 		super();
@@ -96,6 +97,8 @@ public class TestGameBoard extends EPanel implements MouseListener, MouseMotionL
 
 	@Override
 	public void mouseDragged(MouseEvent e) {
+		isDragging = true;
+		logger.trace("mouseDragged: " + e.getPoint().toString());
 	}
 
 	@Override
@@ -105,7 +108,6 @@ public class TestGameBoard extends EPanel implements MouseListener, MouseMotionL
 		if (cards != null) {
 			for (CardGuiBase card : cards) {
 				card.mouseMoved(e);
-				
 			}
 		}
 		repaint();
@@ -113,20 +115,25 @@ public class TestGameBoard extends EPanel implements MouseListener, MouseMotionL
 
 	@Override
 	public void mouseClicked(MouseEvent e) {
-		logger.debug(e.getPoint().toString());
+		logger.debug("mouseClicked: " + e.getPoint().toString());
 	}
 
 	@Override
 	public void mousePressed(MouseEvent e) {
+		logger.debug("mousePressed: " + e.getPoint().toString());
 	}
 
 	@Override
 	public void mouseReleased(MouseEvent e) {
+		if (isDragging) {
+			controller.onViewEvent("Pos", new Point(100,100));
+			isDragging = false;
+		}
+		logger.debug("mouseReleased: " + e.getPoint().toString());
 	}
 
 	@Override
-	public void mouseEntered(MouseEvent e) {
-	}
+	public void mouseEntered(MouseEvent e) {}
 
 	@Override
 	public void mouseExited(MouseEvent e) {
