@@ -13,9 +13,6 @@ public class GameBoardModel extends AbstractModel {
 	private String boardImage;
 	private ArrayList<CardGuiBase> cards;
 	
-	public GameBoardModel() {
-	}
-	
 	public void setBoardImage(String newBoardImage) {
 		String oldBoardImage = boardImage;
 		boardImage = newBoardImage;

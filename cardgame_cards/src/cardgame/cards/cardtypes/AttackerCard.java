@@ -33,6 +33,4 @@ public class AttackerCard extends CardGuiBase {
 		}
 		return null;
 	}
-
-	
 }

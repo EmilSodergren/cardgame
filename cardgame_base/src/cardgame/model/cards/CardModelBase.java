@@ -18,7 +18,7 @@ public class CardModelBase extends AbstractModel {
 
 	public CardModelBase() {
 	}
-
+	
 	public CardModelBase(Point position, Dimension size) {
 		this.setPos(position);
 		this.setSize(size);
