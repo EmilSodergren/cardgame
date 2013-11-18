@@ -50,6 +50,7 @@ public class TestGameBoard extends EPanel implements MouseListener, MouseMotionL
 		}
 	}
 	
+	@SuppressWarnings("unchecked")
 	@Override
 	public void update(PropertyChangeEvent evt) {
 		super.update(evt);
@@ -96,10 +97,8 @@ public class TestGameBoard extends EPanel implements MouseListener, MouseMotionL
 	@Override
 	public void mouseDragged(MouseEvent e) {
 		logger.trace("mouseDragged: " + e.getPoint().toString());
-		if (this.contains(e.getPoint())) {
-			for (CardGuiBase card : cards) {
-				card.doDrag(e);
-			}
+		for (CardGuiBase card : cards) {
+			card.doDrag(e);
 		}
 		repaint();
 	}

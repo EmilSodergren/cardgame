@@ -76,7 +76,7 @@ public abstract class CardGuiBase extends EComponent {
 	 * 
 	 */
 	public void mouseMoved(MouseEvent e) {
-		if (!e.isConsumed()) {
+		if (!e.isConsumed()) { // check isConsumed() to only allow top card to trigger "Focused" 
 			boolean isHit = this.contains(e.getPoint());
 			controller.onViewEvent("Focused", Boolean.valueOf(isHit));
 			if (isHit) {
