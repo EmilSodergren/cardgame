@@ -3,7 +3,6 @@
  */
 package cardgame.graphics.testgui;
 
-import java.awt.Dimension;
 import java.awt.Point;
 
 import cardgame.cards.cardtypes.AttackerCard;
