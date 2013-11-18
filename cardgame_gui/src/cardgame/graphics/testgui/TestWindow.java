@@ -21,14 +21,14 @@ public class TestWindow extends EFrame {
 	
 	private CardGameLogger logger = new CardGameLogger(getClass());
 
-	public TestWindow() {
+	public TestWindow(Dimension resolution) {
 		super("TestWindow");
 		setName(TestWindow.class.getName());
 		logger.info("Main window created");
 		
 		Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
-		setLocation(screenSize.width - 800, 0);
-		setSize(new Dimension(800, 600));
+		setLocation(screenSize.width - resolution.width, 0);
+		setSize(resolution);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 	}
 }

@@ -7,6 +7,7 @@ import java.awt.Dimension;
 import java.awt.Point;
 
 import cardgame.cards.cardtypes.AttackerCard;
+import cardgame.commonconstants.CommonConstants;
 
 public class TestCard extends AttackerCard {
 	
@@ -22,6 +23,6 @@ public class TestCard extends AttackerCard {
 		controller.onViewEvent("MainImagePath", "cardgame/cards/resources/card.png");
 		controller.onViewEvent("GlowImagePath", "cardgame/cards/resources/card_glow_overlay.png");
 		controller.onViewEvent("Pos", new Point(110,110));
-		controller.onViewEvent("Size", new Dimension(96,144));
+		controller.onViewEvent("Size", CommonConstants.CARD_SIZE);
 	}
 }

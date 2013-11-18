@@ -7,10 +7,12 @@ import java.awt.Dimension;
 import java.awt.Graphics;
 import java.awt.Image;
 import java.awt.Point;
+import java.awt.Rectangle;
 import java.awt.event.MouseEvent;
 import java.awt.image.BufferedImage;
 import java.beans.PropertyChangeEvent;
 
+import cardgame.commonconstants.CommonConstants;
 import framework.graphics.guicomponents.EComponent;
 import framework.logging.logger.CardGameLogger;
 
@@ -88,7 +90,7 @@ public abstract class CardGuiBase extends EComponent {
 	// MouseDragging is overriding MVC to make the card follow the mouse without messing with the model
 	
 	// TODO: Maybe override Point to get an offsetWith method 
-	public void mouseDragging(MouseEvent e) {
+	public void doDrag(MouseEvent e) {
 		if (!isDragging) {
 			mouseOffset = new Point(e.getX() - getLocation().x, e.getY() - getLocation().y);
 		}
@@ -97,10 +99,11 @@ public abstract class CardGuiBase extends EComponent {
 			setLocation(e.getPoint().x - mouseOffset.x, e.getPoint().y - mouseOffset.y);
 		}
 	}
+
 	// update the position in the model and let the card react to the position change
 	public void mouseReleased(MouseEvent e) {
 		if (isDragging) {
-			controller.onViewEvent("Pos", new Point(e.getPoint().x - mouseOffset.x, e.getPoint().y - mouseOffset.y));
+			controller.onViewEvent("Pos", confineToRectangle(e.getPoint().x - mouseOffset.x, e.getPoint().y - mouseOffset.y, CommonConstants.CARD_LIMIT_RECTANGLE));
 			isDragging = Boolean.FALSE;
 		}
 	}
@@ -116,5 +119,31 @@ public abstract class CardGuiBase extends EComponent {
 			return true;
 		}
 		return false;
+	}
+	
+	private Point confineToRectangle(int x, int y, Rectangle r) {
+		int newX, newY;
+		
+		// Make sure x is within the rectangle r
+		if (x < r.x) {
+			newX = r.x;
+		} else
+		if (x > r.width) {
+			newX = r.width;
+		} else {
+			newX = x;
+		}
+		
+		// Make sure y is within the rectangle r
+		if (y < r.y) {
+			newY = r.y;
+		} else
+		if (y > r.height) {
+			newY = r.height;
+		} else {
+			newY = y;
+		}
+		
+		return new Point(newX,newY);
 	}
 }
