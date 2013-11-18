@@ -21,7 +21,7 @@ public class TestCard extends AttackerCard {
 		super.setDefaults();
 		controller.onViewEvent("MainImagePath", "cardgame/cards/resources/card.png");
 		controller.onViewEvent("GlowImagePath", "cardgame/cards/resources/card_glow_overlay.png");
-		controller.onViewEvent("Pos", new Point(100,100));
-		controller.onViewEvent("Size", new Dimension(120, 180));
+		controller.onViewEvent("Pos", new Point(110,110));
+		controller.onViewEvent("Size", new Dimension(96,144));
 	}
 }
