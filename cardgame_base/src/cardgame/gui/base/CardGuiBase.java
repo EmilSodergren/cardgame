@@ -9,14 +9,12 @@ import java.awt.Image;
 import java.awt.Point;
 import java.awt.Rectangle;
 import java.awt.event.MouseEvent;
-import java.awt.image.BufferedImage;
 import java.beans.PropertyChangeEvent;
 
-import cardgame.commonconstants.CommonConstants;
-import framework.graphics.guicomponents.EComponent;
+import cardgame.common.CommonConstants;
 import framework.logging.logger.CardGameLogger;
 
-public abstract class CardGuiBase extends EComponent {
+public abstract class CardGuiBase extends CardGameImageComponent {
 
 	private static final long serialVersionUID = 5322618823703871299L;
 	
@@ -68,8 +66,6 @@ public abstract class CardGuiBase extends EComponent {
 		}
 	}
 	
-	public abstract BufferedImage getImageWithPath(String imagePath);
-	
 	/**
 	 * 
 	 * MOUSE INTERACTIONS
@@ -87,15 +83,16 @@ public abstract class CardGuiBase extends EComponent {
 		}
 	}
 	
-	// MouseDragging is overriding MVC to make the card follow the mouse without messing with the model
+	
 	
 	// TODO: Maybe override Point to get an offsetWith method 
 	public void doDrag(MouseEvent e) {
-		if (!isDragging) {
-			mouseOffset = new Point(e.getX() - getLocation().x, e.getY() - getLocation().y);
-		}
 		if (focused) {
+			if (!isDragging) {
+				mouseOffset = new Point(e.getX() - getLocation().x, e.getY() - getLocation().y);
+			}
 			isDragging = Boolean.TRUE;
+			// MouseDragging is overriding MVC to make the card follow the mouse without messing with the model
 			setLocation(e.getPoint().x - mouseOffset.x, e.getPoint().y - mouseOffset.y);
 		}
 	}
