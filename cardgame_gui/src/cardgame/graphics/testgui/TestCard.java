@@ -6,7 +6,7 @@ package cardgame.graphics.testgui;
 import java.awt.Point;
 
 import cardgame.cards.cardtypes.AttackerCard;
-import cardgame.commonconstants.CommonConstants;
+import cardgame.common.CommonConstants;
 
 public class TestCard extends AttackerCard {
 	

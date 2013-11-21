@@ -3,6 +3,8 @@
  */
 package framework.graphics.guicomponents;
 
+import java.awt.Dimension;
+import java.awt.Point;
 import java.beans.PropertyChangeEvent;
 
 import javax.swing.JComponent;
@@ -30,5 +32,18 @@ public class EComponent extends JComponent implements AbstractView {
 
 	@Override
 	public void setDefaults() {
+	}
+	
+	// TODO: Not memory efficient!!! This method will be triggered very often.
+	// Rewrite with local variables or something!
+	@Override
+	public boolean contains(Point currPoint) {
+		Point pos = getLocation();
+		Dimension size = getSize();
+		if ((currPoint.x > pos.x) && (currPoint.x < pos.x + size.width) && 
+		    (currPoint.y > pos.y) && (currPoint.y < pos.y + size.height)) {
+			return true;
+		}
+		return false;
 	}
 }

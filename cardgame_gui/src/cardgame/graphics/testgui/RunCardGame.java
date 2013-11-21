@@ -5,7 +5,7 @@ package cardgame.graphics.testgui;
 
 import java.util.logging.Level;
 
-import cardgame.commonconstants.CommonConstants;
+import cardgame.common.CommonConstants;
 import cardgame.graphics.controller.GameBoardController;
 import cardgame.logging.controller.LoggerController;
 import cardgame.logging.gui.LoggerWindow;

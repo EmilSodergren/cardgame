@@ -105,19 +105,6 @@ public abstract class CardGuiBase extends CardGameImageComponent {
 		}
 	}
 	
-	// TODO: Not memory efficient!!! This method will be triggered very often.
-	// Rewrite with local variables or something!
-	@Override
-	public boolean contains(Point currPoint) {
-		Point pos = getLocation();
-		Dimension size = getSize();
-		if ((currPoint.x > pos.x) && (currPoint.x < pos.x + size.width) && 
-		    (currPoint.y > pos.y) && (currPoint.y < pos.y + size.height)) {
-			return true;
-		}
-		return false;
-	}
-	
 	private Point confineToRectangle(int x, int y, Rectangle r) {
 		int newX, newY;
 		

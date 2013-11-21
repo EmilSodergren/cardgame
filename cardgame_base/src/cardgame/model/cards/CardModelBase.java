@@ -27,30 +27,30 @@ public class CardModelBase extends AbstractModel {
 	public void setPos(Point newPos) {
 		Point oldPos = pos;
 		pos = newPos;
-		propertyChangeSupport.firePropertyChange("pos", oldPos, pos);
+		firePropertyChange("pos", oldPos, pos);
 	}
 	
 	public void setSize(Dimension newSize) {
 		Dimension oldSize = size;
 		size = newSize;
-		propertyChangeSupport.firePropertyChange("size", oldSize, size);
+		firePropertyChange("size", oldSize, size);
 	}
 
 	public void setMainImagePath(String newMainImagePath) {
 		String oldMainImagePath = mainImagePath;
 		mainImagePath = newMainImagePath;
-		propertyChangeSupport.firePropertyChange("mainImagePath", oldMainImagePath, mainImagePath);
+		firePropertyChange("mainImagePath", oldMainImagePath, mainImagePath);
 	}
 
 	public void setGlowImagePath(String newGlowImagePath) {
 		String oldGlowImagePath = glowImagePath;
 		glowImagePath = newGlowImagePath;
-		propertyChangeSupport.firePropertyChange("glowImagePath", oldGlowImagePath, glowImagePath);
+		firePropertyChange("glowImagePath", oldGlowImagePath, glowImagePath);
 	}
 	
 	public void setFocused(Boolean newFocused) {
 		Boolean oldFocused = focused;
 		focused = newFocused;
-		propertyChangeSupport.firePropertyChange("focused", oldFocused, focused);
+		firePropertyChange("focused", oldFocused, focused);
 	}
 }

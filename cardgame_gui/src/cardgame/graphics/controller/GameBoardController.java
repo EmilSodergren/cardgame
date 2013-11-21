@@ -4,12 +4,12 @@
 package cardgame.graphics.controller;
 
 import cardgame.controller.base.ControllerBase;
-import framework.cardgame.mvcbase.abstracts.AbstractModel;
-import framework.cardgame.mvcbase.abstracts.AbstractView;
+import cardgame.graphics.testgui.TestGameBoard;
+import cardgame.model.gameboard.GameBoardModel;
 
 public class GameBoardController extends ControllerBase {
 
-	public GameBoardController(AbstractModel model, AbstractView... views) {
+	public GameBoardController(GameBoardModel model, TestGameBoard... views) {
 		super(model, views);
 	}
 

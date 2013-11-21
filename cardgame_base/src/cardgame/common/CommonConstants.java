@@ -1,7 +1,7 @@
 /**
  * Created by MrE on 18 nov 2013
  */
-package cardgame.commonconstants;
+package cardgame.common;
 
 import java.awt.Dimension;
 import java.awt.Rectangle;
