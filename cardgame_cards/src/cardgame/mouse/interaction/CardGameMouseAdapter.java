@@ -5,12 +5,11 @@ package cardgame.mouse.interaction;
 
 import java.awt.event.MouseEvent;
 
-import framework.logging.logger.CardGameLogger;
 import framework.mouse.EMouseAdapter;
 
 public class CardGameMouseAdapter extends EMouseAdapter {
 	
-	private CardGameLogger logger = new CardGameLogger(getClass());
+//	private CardGameLogger logger = new CardGameLogger(getClass());
 	
 	public CardGameMouseAdapter() {
 	}
