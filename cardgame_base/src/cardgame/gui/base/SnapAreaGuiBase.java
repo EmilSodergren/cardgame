@@ -23,9 +23,8 @@ public class SnapAreaGuiBase extends CardGameImageComponent {
 	private Image correctImage;
 	private Image wrongImage;
 	
-	public SnapAreaGuiBase(Point pos) {
+	public SnapAreaGuiBase() {
 		super();
-		setLocation(pos); // temporary storage of position in local 'Location' to be used when setting up defaults
 	}
 	
 	@Override
@@ -52,10 +51,15 @@ public class SnapAreaGuiBase extends CardGameImageComponent {
 			String imagePath = (String) evt.getNewValue();
 			wrongImage = getImageWithPath(imagePath);
 		}
+		repaint();
 	}
 	
 	public void doDrag(MouseEvent e) {
-		controller.onViewEvent("OnTarget", Boolean.valueOf(this.contains(e.getPoint())));
+		if (isOnTarget || this.contains(e.getPoint())) {
+			controller.onViewEvent("OnTarget", Boolean.TRUE);
+		} else {
+			controller.onViewEvent("OnTarget", Boolean.FALSE);
+		}
 	}
 	
 	public void doRelease(MouseEvent e) {
