@@ -16,4 +16,12 @@ public abstract class ControllerBase extends AbstractController {
 			addView(view);
 		}
 	}
+	
+	/**
+	 * {@inheritDoc}
+	 */
+	@Override
+	public void onViewEvent(String propertyName, Object newValue) {
+		setModelProperty(propertyName, newValue);
+	}
 }

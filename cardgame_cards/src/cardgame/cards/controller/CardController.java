@@ -14,9 +14,4 @@ public class CardController extends ControllerBase {
 	public CardController(AbstractModel model, CardGuiBase... views) {
 		super(model, views);
 	}
-
-	@Override
-	public void onViewEvent(String propertyName, Object newValue) {
-		setModelProperty(propertyName, newValue);
-	}
 }

@@ -12,9 +12,4 @@ public class LoggerController extends ControllerBase {
 	public LoggerController(AbstractModel model, AbstractView view) {
 		super(model, view);
 	}
-
-	@Override
-	public void onViewEvent(String propertyName, Object newValue) {
-		setModelProperty(propertyName, newValue);
-	}
 }

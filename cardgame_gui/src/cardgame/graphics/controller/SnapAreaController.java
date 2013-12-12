@@ -12,12 +12,4 @@ public class SnapAreaController extends ControllerBase {
 	public SnapAreaController(SnapAreaModel model, SnapAreaGuiBase ... views) {
 		super(model, views);
 	}
-	
-	/**
-	 * {@inheritDoc}
-	 */
-	@Override
-	public void onViewEvent(String propertyName, Object newValue) {
-		setModelProperty(propertyName, newValue);
-	}
 }
